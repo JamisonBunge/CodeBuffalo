@@ -15,6 +15,8 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { getQuizQuery } from "../query/query";
+import { graphql } from "react-apollo";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,11 +38,22 @@ function getSteps() {
   return ["", "", "", ""];
 }
 
-export default function HorizontalNonLinearStepper() {
+function HorizontalNonLinearStepper({ data: { getQuiz }, loading }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
   const steps = getSteps();
+  if (loading) {
+    return (
+      <div>
+        {" "}
+        <h1>loading...</h1>
+      </div>
+    );
+  }
+  const quizArr = getQuiz;
+
+  console.log(getQuiz);
 
   function totalSteps() {
     return steps.length;
@@ -103,7 +116,7 @@ export default function HorizontalNonLinearStepper() {
         ))}
       </Stepper>
       <div style={{ marginBottom: 30 }}>
-        <Card />
+        <Card value={quizArr[0]} />
       </div>
       <div>
         {allStepsCompleted() ? (
@@ -155,3 +168,5 @@ export default function HorizontalNonLinearStepper() {
     </div>
   );
 }
+
+export default graphql(getQuizQuery)(HorizontalNonLinearStepper);

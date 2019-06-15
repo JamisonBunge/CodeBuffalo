@@ -17,7 +17,6 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { getQuizQuery } from "../query/query";
 import { graphql } from "react-apollo";
 
 const useStyles = makeStyles(theme => ({
@@ -43,10 +42,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function QuizCard({ data: { getQuiz } }) {
+export default function QuizCard(props) {
   const classes = useStyles();
   const [count, setCount] = React.useState(0);
-  console.log(getQuiz);
+  if (!props.card) {
+    return "loading";
+  }
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card className={classes.card}>
@@ -57,9 +58,7 @@ function QuizCard({ data: { getQuiz } }) {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {props.card.activity}
           </Typography>
         </CardContent>
         <div style={{ display: "flex", justifyContent: "center" }} />
@@ -67,5 +66,3 @@ function QuizCard({ data: { getQuiz } }) {
     </div>
   );
 }
-
-export default graphql(getQuizQuery)(QuizCard);

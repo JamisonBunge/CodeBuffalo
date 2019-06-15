@@ -5,6 +5,10 @@ const getQuizQuery = gql`
     getQuiz {
       activity
       type
+      accessibility
+      participants
+      price
+      key
     }
   }
 `;
