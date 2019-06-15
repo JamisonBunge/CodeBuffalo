@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -10,14 +10,14 @@ import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
+import {red} from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { graphql } from "react-apollo";
+import {graphql} from "react-apollo";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -30,9 +30,7 @@ const useStyles = makeStyles(theme => ({
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
+    transition: theme.transitions.create("transform", {duration: theme.transitions.duration.shortest})
   },
   expandOpen: {
     transform: "rotate(180deg)"
@@ -48,21 +46,21 @@ export default function QuizCard(props) {
   if (!props.card) {
     return "loading";
   }
-  return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.card.activity}
-          </Typography>
-        </CardContent>
-        <div style={{ display: "flex", justifyContent: "center" }} />
-      </Card>
-    </div>
-  );
+  return (<div style={{
+      display: "flex",
+      justifyContent: "center"
+    }}>
+    <Card className={classes.card}>
+      <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish"/>
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {props.card.activity}
+        </Typography>
+      </CardContent>
+      <div style={{
+          display: "flex",
+          justifyContent: "center"
+        }}/>
+    </Card>
+  </div>);
 }
