@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo'
-import { getQuizQuery, getEventsQuery } from '../query/query';
+import { getQuizQuery, getEventsQuery,getEventsByCat } from '../query/query';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -31,13 +31,13 @@ class FeedComponent extends Component {
 
     displayFeed() {
         var data = this.props.data;
-        if(data.loading|| data.getEvents == undefined) {
+        if(data.loading|| data.events == undefined) {
             return<div>Loading event...</div>
         } else {
             // console.log(data);
             //data is ready, map to html and return it
             return (
-              <AutoGrid eventList= {data.getEvents}/>
+              <AutoGrid eventList= {data.events}/>
             );
         }
     }
@@ -76,12 +76,12 @@ function AutoGrid(props) {
 
 //bind booklist to getbooksquery
 //the query result is stored in props
-export default graphql(getEventsQuery, {
+export default graphql(getEventsByCat, {
     options: (props) => {
         //console.log("+++++++++" +props.bookId)
         return {
             variables: {
-                cat:  (props.profile ? props.profile.cat : "social")
+                cat:  (props.profile ? props.profile.cat : ["social","cooking"])
             }
         }
     }

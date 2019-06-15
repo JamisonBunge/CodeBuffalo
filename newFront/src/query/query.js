@@ -25,8 +25,20 @@ query($cat: String!) {
     }
 `
 
+const getEventsByCat = gql`
+query($cat: [String]!) {
+      events(cat: $cat) {
+        name
+        address
+        id
+        score
+      }
+    }
+`
+
 
 export {
   getQuizQuery,
-  getEventsQuery
+  getEventsQuery,
+  getEventsByCat
 };
