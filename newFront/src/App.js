@@ -1,29 +1,37 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Quiz from "./quiz/quiz.js";
+import React, { Component } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:5003/' //endpoint were making request to queries to
+});
 
 function App() {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Quiz</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
-          </li>
-        </ul>
+      <ApolloProvider client={client}>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Quiz</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/topics">Topics</Link>
+            </li>
+          </ul>
 
-        <hr />
+          <hr />
 
-        <Route exact path="/" component={Quiz} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
-      </div>
+          <Route exact path="/" component={Quiz} />
+          <Route path="/about" component={About} />
+          <Route path="/topics" component={Topics} />
+        </div>
+      </ApolloProvider>
     </Router>
   );
 }
