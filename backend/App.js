@@ -22,14 +22,15 @@ type BoredResponse {
     address: String,
     id: String,
     score: Int,
-    type: String
+    type: String,
+    image_url: String
     #eventInfo: [Event]
 },
 type Query  {
     user: String,
     getQuiz: [BoredResponse],
     getEvents(cat: String!): [Place],
-    events(cat: [String]) : [Place]
+    events(cat: [String]!) : [Place]
    # toDB(id: String!): Event
 },
 type Event {
