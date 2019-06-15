@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import Quiz from "./quiz/quiz.js";
+import Quiz from "./quiz/testquiz.js";
 import FeedComponent from "./feed/FeedComponent";
 
 const client = new ApolloClient({
