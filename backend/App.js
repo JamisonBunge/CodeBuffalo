@@ -21,27 +21,33 @@ type BoredResponse {
     name: String,
     address: String,
     id: String,
-    score: Int
+    score: Int,
+    type: String
     #eventInfo: [Event]
 },
 type Query  {
     user: String,
     getQuiz: [BoredResponse],
     getEvents(cat: String!): [Place],
-    toDB(id: String!): Event
+    events(cat: [String]) : [Place]
+   # toDB(id: String!): Event
 },
 type Event {
     id: String,
     score: Int
 
-}
+}#,
+# type Mutation {
+#   post(title: String!,type:String!,participantsr:Number): Link!
+# }
 `;
 
 const resolvers = {
     Query: {
         user: () => { return "Nick Miller" },
         getQuiz: async (parent, args, { dataSources }) => dataSources.Bored.getQuiz(),
-        getEvents: async (parent, { cat }, { dataSources }) => dataSources.Place.getPlaces(cat)
+        getEvents: async (parent, { cat }, { dataSources }) => dataSources.Place.getPlaces(cat),
+        events: async (parent, { cat }, { dataSources }) => dataSources.Place.getAllPlaces(cat),
 
     }// ,
     // Place: {
