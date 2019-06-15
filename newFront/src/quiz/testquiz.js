@@ -20,7 +20,6 @@ class QuizView extends React.Component {
 
   displayCard(x) {
     var data = this.props.data;
-    console.log(this.props);
     if (data.loading) {
       return <div>Loading...</div>;
     } else {

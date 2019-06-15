@@ -19,6 +19,12 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { graphql } from "react-apollo";
 
+var state = [];
+function likeType(str) {
+  state.push(str);
+  console.log(state.length);
+}
+
 const useStyles = makeStyles(theme => ({
   card: {
     width: 500,
@@ -84,7 +90,11 @@ function QuizFun(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             {props.value.elem.activity}
           </Typography>
-          <IconButton variant="contained" color="primary">
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={likeType(props.value.elem.type)}
+          >
             <CheckIcon />
           </IconButton>
         </CardContent>
@@ -102,10 +112,8 @@ function QuizFun(props) {
 export default class QuizCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { elem: props };
   }
   render() {
-    console.log(this.props);
     return <QuizFun value={this.props} />;
   }
 }
