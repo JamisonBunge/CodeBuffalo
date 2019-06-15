@@ -17,6 +17,8 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { getQuizQuery } from "../query/query";
+import { graphql } from "react-apollo";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -41,10 +43,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function QuizCard() {
+function QuizCard({ data: { getQuiz } }) {
   const classes = useStyles();
   const [count, setCount] = React.useState(0);
-
+  console.log(getQuiz);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card className={classes.card}>
@@ -65,3 +67,5 @@ export default function QuizCard() {
     </div>
   );
 }
+
+export default graphql(getQuizQuery)(QuizCard);
