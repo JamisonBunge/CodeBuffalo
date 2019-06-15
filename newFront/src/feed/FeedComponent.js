@@ -2,8 +2,24 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo'
 import { getQuizQuery, getEventsQuery } from '../query/query';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 //components
-import FeedCard from './FeedCard'
+import FeedCardList from './FeedCard'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 
 class FeedComponent extends Component {
     constructor(props) {
@@ -18,31 +34,44 @@ class FeedComponent extends Component {
         if(data.loading|| data.getEvents == undefined) {
             return<div>Loading event...</div>
         } else {
-          console.log(data);
-
+            // console.log(data);
             //data is ready, map to html and return it
-            return data.getEvents.map(singleEvent => {
-                console.log(singleEvent);
-                return(
-                    <li> {singleEvent.name} </li>
-                )
-            })
-
+            return (
+              <AutoGrid eventList= {data.getEvents}/>
+            );
         }
     }
 
     render() {
         console.log(this.props)
         return (
-            <div>
-                <ul id="event-list">
-                    {this.displayFeed()}
-                    <FeedCard />
-                </ul>
+            <div id="event-list">
+                {this.displayFeed()}
             </div>
         );
     }
 }
+
+function AutoGrid(props) {
+  const classes = useStyles();
+
+ return (
+    <div className={classes.root}>
+      <Grid container spacing={4}>
+
+        {props.eventList.map((value, index) => {
+          return (
+            <Grid item xs={6}>
+              <FeedCardList feedEvent={value}/>
+            </Grid>
+          )
+        })}
+      </Grid>
+    </div>
+  );
+
+}
+
 
 
 //bind booklist to getbooksquery

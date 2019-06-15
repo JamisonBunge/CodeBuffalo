@@ -20,6 +20,7 @@ query($cat: String!) {
         name
         address
         id
+        score
       }
     }
 `

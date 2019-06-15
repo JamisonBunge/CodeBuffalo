@@ -7,7 +7,7 @@ import FeedComponent from "./feed/FeedComponent";
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5003/' //endpoint were making request to queries to
+  uri: 'http://localhost:5004/' //endpoint were making request to queries to
 });
 
 function App() {
