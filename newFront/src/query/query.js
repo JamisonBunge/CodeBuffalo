@@ -1,6 +1,8 @@
-import { gql } from "apollo-boost";
+import {
+  gql
+} from "apollo-boost";
 
-const getQuizQuery = gql`
+const getQuizQuery = gql `
   {
     getQuiz {
       activity
@@ -11,5 +13,19 @@ const getQuizQuery = gql`
       key
     }
   }
-`;
-export { getQuizQuery };
+`
+const getEventsQuery = gql`
+query($cat: String!) {
+      getEvents(cat: $cat) {
+        name
+        address
+        id
+      }
+    }
+`
+
+
+export {
+  getQuizQuery,
+  getEventsQuery
+};
