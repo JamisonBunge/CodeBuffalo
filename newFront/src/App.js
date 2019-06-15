@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Quiz from "./quiz/quiz.js";
 import React, { Component } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import TestQuiz from "./quiz/testquiz.js";
+import Quiz from "./quiz/quiz.js";
+import FeedComponent from "./feed/FeedComponent";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5003/" //endpoint were making request to queries to
+  uri: "http://localhost:5004/" //endpoint were making request to queries to
 });
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
 
           <hr />
 
-          <Route exact path="/" component={TestQuiz} />
-          <Route path="/about" component={About} />
+          <Route exact path="/" component={Quiz} />
+          <Route path="/about" component={FeedComponent} />
           <Route path="/topics" component={Topics} />
         </div>
       </ApolloProvider>
