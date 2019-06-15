@@ -18,7 +18,7 @@ class QuizView extends React.Component {
     };
   }
 
-  displayCard() {
+  displayCard(x) {
     var data = this.props.data;
     console.log(this.props);
     if (data.loading) {
@@ -27,7 +27,7 @@ class QuizView extends React.Component {
       //data is ready, map to html and return it
       return (
         <div>
-          <Card elem={this.props} />
+          <Card elem={data.getQuiz[x]} />
         </div>
       );
     }
@@ -47,10 +47,10 @@ class QuizView extends React.Component {
           alignItems="center"
           spacing={1}
         >
-          <ul id="This is an activity">{this.displayCard()}</ul>
-          <ul id="This is an activity">{this.displayCard()}</ul>
-          <ul id="This is an activity">{this.displayCard()}</ul>
-          <ul id="This is an activity">{this.displayCard()}</ul>
+          <ul id="This is an activity">{this.displayCard(0)}</ul>
+          <ul id="This is an activity">{this.displayCard(1)}</ul>
+          <ul id="This is an activity">{this.displayCard(2)}</ul>
+          <ul id="This is an activity">{this.displayCard(3)}</ul>
         </Grid>
       </div>
     );

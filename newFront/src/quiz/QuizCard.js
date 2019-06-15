@@ -105,6 +105,7 @@ export default class QuizCard extends React.Component {
     this.state = { elem: props };
   }
   render() {
+    console.log(this.props);
     return <QuizFun value={this.props} />;
   }
 }
