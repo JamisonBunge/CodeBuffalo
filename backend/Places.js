@@ -14,7 +14,20 @@ const Event = require('./models/Event');
 class Place extends RESTDataSource {
     constructor() {
         super();
-        this.ClientID = "ed2n0vspsa3f8qjz10kbe7yq99vzvd"
+        // this.ClientID = "ed2n0vspsa3f8qjz10kbe7yq99vzvd"
+        this.imgarr = ["https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+
+
+
+
+        ]
+
     }
     willSendRequest(request) {
         //     request.headers.set('Client-ID', this.ClientID);
@@ -45,8 +58,7 @@ class Place extends RESTDataSource {
 
 
 
-            //
-
+            let imarr = await this.getImg(cat[y])
 
             let result = await this.get("https://api.tomtom.com/search/2/categorySearch/" + queryVal + ".json?limit=20&lat=42.886448&lon=-78.878372&topLeft=37.553%2C-122.453&btmRight=37.4%2C-122.55&key=ygEtXJxPIXwEUV7eGCfNnGOkDPEdVCqC")
             // console.log(result.results)
@@ -60,6 +72,7 @@ class Place extends RESTDataSource {
                 ran = Math.floor(ran)
                 obj.score = ran
                 obj.type = cat[y]
+                obj.image_url = imarr[x]
                 res.push(obj)
                 // if (x == 1) { console.log(Event.find({ id: 2 })) }
             }
@@ -71,6 +84,46 @@ class Place extends RESTDataSource {
 
 
     }
+
+    async getImg(cat) {
+        let queryVal
+        let imarr = []
+        switch (cat) {
+            case "social":
+                queryVal = "museum"
+                break;
+            case "cooking":
+                queryVal = "food"
+                break;
+            case "charity":
+                queryVal = "people"
+                break;
+            case "recreational":
+                queryVal = "buildings"
+                break;
+            default:
+                break;
+
+        }
+
+        let result = await this.get("https://pixabay.com/api/?key=12788410-9035c72a1c69f8d0d56b0c6d9&category=" + queryVal)
+        console.log(result)
+
+        for (let x in result.hits) {
+            //console.log(result.hits[x].webformatURL)
+            imarr.push(result.hits[x].webformatURL)
+        }
+
+
+
+
+        return imarr
+
+    }
+
+
+
+
     shuffle(array) {
         var i = 0
             , j = 0

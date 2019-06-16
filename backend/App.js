@@ -32,6 +32,7 @@ type Query  {
     getEvents(cat: String!): [Place],
     events(cat: [String]!) : [Place],
     userEvents: [Event]
+    randomPic: [String]
    # toDB(id: String!): Event
 },
 type Event {
@@ -53,6 +54,7 @@ const resolvers = {
         getEvents: async (parent, { cat }, { dataSources }) => dataSources.Place.getPlaces(cat),
         events: async (parent, { cat }, { dataSources }) => dataSources.Place.getAllPlaces(cat),
         userEvents: () => { return Event.find({}) }
+        // randomPic: async (parent, { cat }, { dataSources }) => dataSources.Place.getAllPlaces(cat)
     },
     Mutation: {
         post: (root, args) => {
