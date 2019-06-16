@@ -1,19 +1,19 @@
 
-## DEMO
+## YOUTUBE DEMO
 https://youtu.be/Wiz0UDfehJQ
 
 ## RUN INSTRUCTIONS
 
-1] Clone the repo, link: https://github.com/JamisonBunge/CodeBuffalo
-2] In the backend folder use 'npm install'
-3] Type 'node App.js' to start the backend server
+1] Clone the repo, link: https://github.com/JamisonBunge/CodeBuffalo \
+2] In the backend folder use 'npm install' \
+3] Type 'node App.js' to start the backend server 
 
-4] In the newFront folder use 'npm install'
+4] In the newFront folder use 'npm install' \
 5] Type 'npm start' to start the frontend server
 
-6] If something goes wrong with the above instructions try removing the nodemodules
-newFront and backend and repeat the install commands. If the problem persists and you can not
-get the code to run feel free to contact me: 716-467-7807
+6] If something goes wrong with the above instructions try removing the nodemodules \
+newFront and backend and repeat the install commands. If the problem persists and you can not \
+get the code to run feel free to contact me
 
 
 ## About Trova
@@ -31,7 +31,7 @@ Trova enables users to find points of interest in their local area based on inte
 
 ## Trouble Shooting /  BUGS
 
-Images not showing up on the cards?
+Images not showing up on the cards? \
     This could be due to a limitation on pixabay's random image API.
 
 
