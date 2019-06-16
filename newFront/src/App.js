@@ -7,18 +7,32 @@ import FeedComponent from "./feed/FeedComponent";
 import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
+import NestedList from "./drawer.js";
+import { state, reset } from "./quiz/State.js";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Collapse from "@material-ui/core/Collapse";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import SendIcon from "@material-ui/icons/Send";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import StarBorder from "@material-ui/icons/StarBorder";
 import Avatar from "@material-ui/core/Avatar";
-import Grid from "@material-ui/core/Grid";
 
 const client = new ApolloClient({
   uri: "http://localhost:5004/" //endpoint were making request to queries to
 });
 
-const drawerWidth = 125;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    width: "100%",
+    maxWidth: 400,
+    backgroundColor: theme.palette.background.paper
   },
   drawer: {
     width: drawerWidth,
@@ -33,15 +47,33 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3)
   },
+  nested: {
+    paddingLeft: theme.spacing(4)
+  },
   bigAvatar: {
-    margin: 15,
-    width: 90,
-    height: 90
+    margin: 20,
+    width: 100,
+    height: 100
   }
 }));
 
 function App() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+  function handleClick() {
+    setOpen(!open);
+  }
+
+  function handleReset() {
+    reset();
+    return <Link to="/" />;
+  }
+
+  function handleDash() {
+    return <Link to="/feed" />;
+  }
+
   return (
     <Router>
       <ApolloProvider client={client}>
@@ -53,35 +85,60 @@ function App() {
           }}
           anchor="left"
         >
-          <Grid
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start"
+          <List
+            component="nav"
+            aria-labelledby="nested-list-subheader"
+            className={classes.root}
           >
-            <Grid item>
+            <ListItem>
               <Avatar
-                alt="Nick Miller"
-                src="https://media.licdn.com/dms/image/C5603AQEVkBpfsTLUEQ/profile-displayphoto-shrink_800_800/0?e=1566432000&v=beta&t=hfmF_-wDSI89MRsDWztYgCCEchWvZB-mKWvrvWSgy9w"
-                className={classes.avatar}
+                alt="Remy Sharp"
+                src="https://cdn.ndtv.com/tech/images/gadgets/zuckerberg_fb_live_scrsht.jpg?output-quality=80&output-format=webp"
+                className={classes.bigAvatar}
               />
-            </Grid>
-            <Grid item>
-              <ul>
-                <li>
-                  <Link to="/">Quiz</Link>
-                </li>
-                <li>
-                  <Link to="/about">Feed</Link>
-                </li>
-              </ul>
-            </Grid>
-          </Grid>
+            </ListItem>
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Profile" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText primary="20 Day Event streak!" />
+                </ListItem>
+              </List>
+            </Collapse>
+            <ListItem button component={Link} to="/feed">
+              <ListItemIcon>
+                <SendIcon />
+              </ListItemIcon>
+              <ListItemText primary="Feed" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <SendIcon />
+              </ListItemIcon>
+              <ListItemText primary="UserFeed" />
+            </ListItem>
+            <ListItem button onClick={handleReset}>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Reset Quiz" />
+            </ListItem>
+          </List>
         </Drawer>
         <div>
-          <Box p={20}>
+          <Box p={30}>
             <Route exact path="/" component={Quiz} />
-            <Route path="/about" component={FeedComponent} />
+            <Route path="/feed" component={FeedComponent} />
+            {/*<Route path="/userfeed" component={UserFeed} />*/}
           </Box>
         </div>
       </ApolloProvider>
