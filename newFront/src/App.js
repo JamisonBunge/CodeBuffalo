@@ -14,12 +14,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import SendIcon from "@material-ui/icons/Send";
+import PersonIcon from "@material-ui/icons/Person";
+import DNSIcon from "@material-ui/icons/Dns";
+import GroupIcon from "@material-ui/icons/Group";
+import DashIcon from "@material-ui/icons/Dashboard";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
+import FlameIcon from "@material-ui/icons/Whatshot";
 import Avatar from "@material-ui/core/Avatar";
 
 const client = new ApolloClient({
@@ -94,7 +95,7 @@ function App() {
             </ListItem>
             <ListItem button onClick={handleClick}>
               <ListItemIcon>
-                <InboxIcon />
+                <PersonIcon />
               </ListItemIcon>
               <ListItemText primary="My Profile" />
               {open ? <ExpandLess /> : <ExpandMore />}
@@ -103,27 +104,27 @@ function App() {
               <List component="div" disablePadding>
                 <ListItem className={classes.nested}>
                   <ListItemIcon>
-                    <StarBorder />
+                    <FlameIcon />
                   </ListItemIcon>
-                  <ListItemText primary="20 Day Event streak!" />
+                  <ListItemText primary="20 day event streak!" />
                 </ListItem>
               </List>
             </Collapse>
             <ListItem button component={Link} to="/feed">
               <ListItemIcon>
-                <SendIcon />
+                <DashIcon />
               </ListItemIcon>
               <ListItemText primary="Feed" />
             </ListItem>
             <ListItem button component={Link} to="/userFeed">
               <ListItemIcon>
-                <SendIcon />
+                <GroupIcon />
               </ListItemIcon>
               <ListItemText primary="UserFeed" />
             </ListItem>
             <ListItem button onClick={handleReset} component={Link} to="/">
               <ListItemIcon>
-                <DraftsIcon />
+                <DNSIcon />
               </ListItemIcon>
               <ListItemText primary="Reset Quiz" />
             </ListItem>

@@ -53,16 +53,20 @@ function QuizFun(props) {
   let image;
   switch (props.value.elem.type) {
     case "social":
-      image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
+      image =
+        "https://images.unsplash.com/photo-1557336863-b97994102380?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
       break;
     case "charity":
-      image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
+      image =
+        "https://images.unsplash.com/photo-1556413084-41a81ea2ade7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
       break;
     case "recreational":
-      image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
+      image =
+        "https://images.unsplash.com/photo-1473094116835-378cb28fae0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
       break;
     case "cooking":
-      image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
+      image =
+        "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
       break;
     default:
       image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
