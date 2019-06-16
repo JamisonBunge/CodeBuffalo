@@ -33,6 +33,7 @@ query($cat: [String]!) {
         address
         id
         score
+        image_url
       }
     }
 `

@@ -94,7 +94,7 @@ function ImgMediaCard(props) {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={"/static/images/cards/contemplative-reptile.jpg"}
           title="Contemplative Reptile"
         />
         <CardContent>

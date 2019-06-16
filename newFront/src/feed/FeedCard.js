@@ -95,7 +95,7 @@ function ImgMediaCard(props) {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.eventItem.image_url}
           title="Contemplative Reptile"
           action={
             <IconButton aria-label="Settings">
