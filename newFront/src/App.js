@@ -79,7 +79,7 @@ function App() {
           </Grid>
         </Drawer>
         <div>
-          <Box p={20}>
+          <Box >
             <Route exact path="/" component={Quiz} />
             <Route path="/about" component={FeedComponent} />
           </Box>
