@@ -36,6 +36,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 400,
     backgroundColor: theme.palette.background.paper
   },
+  paper: {
+    background: "blue"
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0
@@ -56,6 +59,9 @@ const useStyles = makeStyles(theme => ({
     margin: 20,
     width: 100,
     height: 100
+  },
+  List: {
+    backgroundColor: "#fcc400"
   }
 }));
 
@@ -106,7 +112,7 @@ function App() {
                 <List component="div" disablePadding>
                   <ListItem className={classes.nested}>
                     <ListItemIcon>
-                      <FlameIcon />
+                      <FlameIcon color="primary" />
                     </ListItemIcon>
                     <ListItemText primary="20 day event streak!" />
                   </ListItem>
@@ -122,7 +128,7 @@ function App() {
                 <ListItemIcon>
                   <GroupIcon />
                 </ListItemIcon>
-                <ListItemText primary="UserFeed" />
+                <ListItemText primary="User Events" />
               </ListItem>
               <ListItem
                 button

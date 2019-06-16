@@ -26,7 +26,8 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles(theme => ({
   card: {
     width: 500,
-    height: 400
+    height: 400,
+    backgroundColor: "#ffe2aa"
   },
   media: {
     height: 300,
