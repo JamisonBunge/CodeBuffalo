@@ -94,7 +94,7 @@ function ImgMediaCard(props) {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image={"/static/images/cards/contemplative-reptile.jpg"}
+          image={"https://us.123rf.com/450wm/morphart/morphart1904/morphart190402488/123452542-stock-vector-outdoor-park-scenario-on-a-bright-warm-sunny-day-vector-color-drawing-or-illustration.jpg?ver=6"}
           title="Contemplative Reptile"
         />
         <CardContent>
