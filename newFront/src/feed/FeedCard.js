@@ -62,36 +62,44 @@ const useStyles = muiBaseTheme => ({
 
 class FeedCardList extends Component {
 
-    feedDetails() {
-        console.log(this.props.feedEvent);
-        const feed = this.props.feedEvent;
-        console.log(feed);
+  feedDetails() {
+    console.log(this.props.feedEvent);
+    const feed = this.props.feedEvent;
+    console.log(feed);
 
-        if(feed) {
-            return(
-              <ImgMediaCard eventItem= {feed}/>
-            );
-        } else {
-            return (
-                <div>No feed selected</div>
-            );
-        }
+    if (feed) {
+      return (
+        <ImgMediaCard eventItem={feed} callBack={this.update} />
+      );
+    } else {
+      return (
+        <div>No feed selected</div>
+      );
     }
 
-    render() {
-        return(
-            <div id="event-details">
-                {this.feedDetails()  }
-            </div>
-        );
-    }
+  }
+
+  update() {
+    this.setState({ somethingToUpdate: "newValue" });
+    console.log("updated!");
+  }
+
+  render() {
+    return (
+      <div id="event-details">
+        {this.feedDetails()}
+      </div>
+    );
+  }
 
 }
 
 
 function ImgMediaCard(props) {
   const classes = useStyles();
-
+  console.log(props)
+  console.log("ddd")
+  // let x = props.eventItem.score
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -102,36 +110,37 @@ function ImgMediaCard(props) {
           image="/static/images/cards/contemplative-reptile.jpg"
           title="Contemplative Reptile"
           action={
-             <IconButton aria-label="Settings">
-               <Favorite />
-             </IconButton>
-        }
+            <IconButton aria-label="Settings">
+              <Favorite />
+            </IconButton>
+          }
         />
         <CardContent>
-        <Typography
-           className={"MuiTypography--heading"}
-           variant={"h6"}
-           gutterBottom
-         >
-           {props.eventItem.name}
-         </Typography>
-         <Typography
-           className={"MuiTypography--subheading"}
-           variant={"caption"}
-         >
-           {props.eventItem.address}
-         </Typography>
+          <Typography
+            className={"MuiTypography--heading"}
+            variant={"h6"}
+            gutterBottom
+          >
+            {props.eventItem.name}
+          </Typography>
+          <Typography
+            className={"MuiTypography--subheading"}
+            variant={"caption"}
+          >
+            {props.eventItem.address}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <Divider className={classes.divider} light />
       <div className={classes.toolbarButtons}>
         <CardActions>
-        <IconButton aria-label="Share" onClick={() => { console.log('onClick'); }}>
-           <Favorite />
-         </IconButton>
+          <IconButton aria-label="Share" onClick={() => console.log("hello")}>
+            <Favorite />
+            {props.eventItem.score}
+          </IconButton>
         </CardActions>
       </div>
-    </Card>
+    </Card >
   );
 }
 

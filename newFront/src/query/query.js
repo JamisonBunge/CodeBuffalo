@@ -2,7 +2,7 @@ import {
   gql
 } from "apollo-boost";
 
-const getQuizQuery = gql `
+const getQuizQuery = gql`
   {
     getQuiz {
       activity
@@ -21,6 +21,7 @@ query($cat: String!) {
         address
         id
         score
+        type
       }
     }
 `
