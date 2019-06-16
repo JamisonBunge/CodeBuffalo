@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo'
 import { getQuizQuery, getEventsQuery, getEventsByCat, getUserFeedQuery } from '../query/query';
@@ -6,20 +5,6 @@ import AddUser from './AddUser'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-=======
-import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import {
-  getQuizQuery,
-  getEventsQuery,
-  getEventsByCat,
-  getUserFeedQuery
-} from "../query/query";
-
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
->>>>>>> 91b9011f709202e4a907f50df12ec571fd81756f
 
 //components
 import UserFeedCardList from "./UserFeedCard";
@@ -35,12 +20,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-<<<<<<< HEAD
 
 class UserFeedComponent extends Component {
-=======
-class FeedComponent extends Component {
->>>>>>> 91b9011f709202e4a907f50df12ec571fd81756f
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +31,6 @@ class FeedComponent extends Component {
 
   displayFeed() {
     var data = this.props.data;
-<<<<<<< HEAD
     console.log(data)
     if (data.loading || data.userEvents == undefined) {
       return <div>Loading event...</div>
@@ -60,19 +40,10 @@ class FeedComponent extends Component {
       return (
         <AutoGrid eventList={data.userEvents} />
       );
-=======
-    if (data.loading || data.events == undefined) {
-      return <div>Loading event...</div>;
-    } else {
-      // console.log(data);
-      //data is ready, map to html and return it
-      return <AutoGrid eventList={data.events} />;
->>>>>>> 91b9011f709202e4a907f50df12ec571fd81756f
     }
   }
 
   render() {
-<<<<<<< HEAD
     console.log(this.props)
     return (
       <div id="event-list">
@@ -80,10 +51,6 @@ class FeedComponent extends Component {
         <AddUser />
       </div>
     );
-=======
-    console.log(this.props);
-    return <div id="event-list">{this.displayFeed()}</div>;
->>>>>>> 91b9011f709202e4a907f50df12ec571fd81756f
   }
 }
 
@@ -98,12 +65,8 @@ function AutoGrid(props) {
             <Grid item xs={6}>
               <UserFeedCardList feedEvent={value} />
             </Grid>
-<<<<<<< HEAD
 
           )
-=======
-          );
->>>>>>> 91b9011f709202e4a907f50df12ec571fd81756f
         })}
       </Grid>
     </div>
