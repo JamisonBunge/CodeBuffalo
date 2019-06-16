@@ -1,8 +1,8 @@
 
-DEMO
- https://youtu.be/Wiz0UDfehJQ
+## DEMO
+https://youtu.be/Wiz0UDfehJQ
 
-RUN INSTRUCTIONS
+## RUN INSTRUCTIONS
 
 1] Clone the repo, link: https://github.com/JamisonBunge/CodeBuffalo
 2] In the backend folder use 'npm install'
@@ -16,12 +16,12 @@ newFront and backend and repeat the install commands. If the problem persists an
 get the code to run feel free to contact me: 716-467-7807
 
 
-About Trova
+## About Trova
 
 Trova enables users to find points of interest in their local area based on interest they have. These interests are obtained through a quiz that is powered by the BoredAPI. Based on how the user answers this quiz, the feed tab will populate with places relative to those interests. Trova also has a UserFeed for individuals to post their own events. Trova is all about bringing people together, this section is dedicated to just that.
 
 
-Things to keep in mind
+## Things to keep in mind
 
 1] If nothing shows up in the feed you may have forgot to fill out the quiz. Click on the quiz tab and check a few boxes to show your interest in the activity.
 
@@ -29,16 +29,21 @@ Things to keep in mind
 
 3] The feed items are not currently clickable. Instead, we use this section to quickly show the user places near them that are tailored to their interests.
 
-Trouble Shooting /  BUGS
+## Trouble Shooting /  BUGS
 
 Images not showing up on the cards?
     This could be due to a limitation on pixabay's random image API.
 
 
-Powered By Apollo GraphQL
+## Powered By Apollo GraphQL
+
+![alt text](https://imgur.com/a/acKn5Ad "tech stack")
 
 
-Tech
+## Tech Stack
 
-Backend: Node.js, Apollo-Server (GraphQL), MongoDB
-Frontend: React.js, Apollo-Client (GraphQL),
+#### Backend:
+Node.js, Apollo-Server (GraphQL), MongoDB
+
+#### Frontend:
+React.js, Apollo-Client (GraphQL),
