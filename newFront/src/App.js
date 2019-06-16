@@ -4,6 +4,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import Quiz from "./quiz/testquiz.js";
 import FeedComponent from "./feed/FeedComponent";
+import UserFeed from "./userFeed/UserFeedComponent";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
@@ -66,11 +67,6 @@ function App() {
 
   function handleReset() {
     reset();
-    return <Link to="/" />;
-  }
-
-  function handleDash() {
-    return <Link to="/feed" />;
   }
 
   return (
@@ -119,13 +115,13 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Feed" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component={Link} to="/userFeed">
               <ListItemIcon>
                 <SendIcon />
               </ListItemIcon>
               <ListItemText primary="UserFeed" />
             </ListItem>
-            <ListItem button onClick={handleReset}>
+            <ListItem button onClick={handleReset} component={Link} to="/">
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
@@ -137,7 +133,7 @@ function App() {
           <Box p={30}>
             <Route exact path="/" component={Quiz} />
             <Route path="/feed" component={FeedComponent} />
-            {/*<Route path="/userfeed" component={UserFeed} />*/}
+            <Route path="/userfeed" component={UserFeed} />
           </Box>
         </div>
       </ApolloProvider>
