@@ -37,7 +37,7 @@ Images not showing up on the cards?
 
 ## Powered By Apollo GraphQL
 
-![alt text](https://imgur.com/a/acKn5Ad "tech stack")
+![techstack](https://github.com/JamisonBunge/CodeBuffalo/blob/master/techstack.png "tech stack")
 
 
 ## Tech Stack
