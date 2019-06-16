@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
     id: String,
     name: String,
+    description: String,
     score: Number,
-    address: String
+    user: String
 
 })
 
