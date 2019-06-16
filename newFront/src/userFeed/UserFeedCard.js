@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { graphql } from 'react-apollo'
+import React, { Component } from "react";
+import { graphql } from "react-apollo";
 import { withStyles } from "@material-ui/core/styles";
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Favorite from '@material-ui/icons/Favorite';
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Favorite from "@material-ui/icons/Favorite";
+import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Avatar from "@material-ui/core/Avatar";
+import LikeComponent from "../feed/LikeComponent.js";
 
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
 
 const faces = [
   "http://i.pravatar.cc/300?img=1",
@@ -52,31 +53,23 @@ const useStyles = muiBaseTheme => ({
   },
   // this group of buttons will be aligned to the right side
   toolbarButtons: {
-    marginLeft: 'auto',
-  },
-
+    marginLeft: "auto"
+  }
 });
 //import { getAuthorsQuery, addBookMutation, getBooksQuery} from '../queries/queries';
 // import { getBookQuery } from '../queries/queries'
 
-
 class UserFeedCardList extends Component {
-
   feedDetails() {
     console.log(this.props.feedEvent);
     const feed = this.props.feedEvent;
     console.log(feed);
 
     if (feed) {
-      return (
-        <ImgMediaCard eventItem={feed} callBack={this.update} />
-      );
+      return <ImgMediaCard eventItem={feed} callBack={this.update} />;
     } else {
-      return (
-        <div>No feed selected</div>
-      );
+      return <div>No feed selected</div>;
     }
-
   }
 
   update() {
@@ -85,20 +78,14 @@ class UserFeedCardList extends Component {
   }
 
   render() {
-    return (
-      <div id="event-details">
-        {this.feedDetails()}
-      </div>
-    );
+    return <div id="event-details">{this.feedDetails()}</div>;
   }
-
 }
-
 
 function ImgMediaCard(props) {
   const classes = useStyles();
-  console.log(props)
-  console.log("ddd")
+  console.log(props);
+  console.log("ddd");
   // let x = props.eventItem.score
   return (
     <Card className={classes.card}>
@@ -109,11 +96,6 @@ function ImgMediaCard(props) {
           height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
           title="Contemplative Reptile"
-          action={
-            <IconButton aria-label="Settings">
-              <Favorite />
-            </IconButton>
-          }
         />
         <CardContent>
           <Typography
@@ -127,7 +109,9 @@ function ImgMediaCard(props) {
             className={"MuiTypography--subheading"}
             variant={"caption"}
           >
-            {props.eventItem.description}<br/>User: {props.eventItem.user}
+            {props.eventItem.description}
+            <br />
+            User: {props.eventItem.user}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -135,12 +119,11 @@ function ImgMediaCard(props) {
       <div className={classes.toolbarButtons}>
         <CardActions>
           <IconButton aria-label="Share" onClick={() => console.log("hello")}>
-            <Favorite />
-            {props.eventItem.score}
+            <LikeComponent />
           </IconButton>
         </CardActions>
       </div>
-    </Card >
+    </Card>
   );
 }
 
