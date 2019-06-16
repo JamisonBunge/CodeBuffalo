@@ -1,6 +1,6 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
 
-class Bored extends RESTDataSource {
+class Picture extends RESTDataSource {
     constructor() {
         super();
         this.ClientID = "ed2n0vspsa3f8qjz10kbe7yq99vzvd"
@@ -21,7 +21,7 @@ class Bored extends RESTDataSource {
         return result
     }
 
-    async getQuiz() {
+    async getPics() {
 
         let typeList = ["social", "charity", "recreational", "cooking"]
 
@@ -29,18 +29,17 @@ class Bored extends RESTDataSource {
         let data = []
         for (let x in typeList) {
             let res = this.getIndv(typeList[x]);
-            res.image_url = "hello"
-            console.log(res.image_url)
-
             data.push(res)
         }
 
+        //data.push(this.getIndvii())
+        //console.log(result)
         return data
-
+        //return { "response": result, "responseSplit": responseSplit, "badReviews": badReviews, "firstReview": badReviews[1] }
     }
 
 
 
 
 }
-module.exports = Bored
+module.exports = Picture

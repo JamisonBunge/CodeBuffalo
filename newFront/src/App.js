@@ -71,74 +71,76 @@ function App() {
   }
 
   return (
-    <Router>
-      <ApolloProvider client={client}>
-        <Drawer
-          className={classes.drawer}
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper
-          }}
-          anchor="left"
-        >
-          <List
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            className={classes.root}
+    <div>
+      <Router>
+        <ApolloProvider client={client}>
+          <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{
+              paper: classes.drawerPaper
+            }}
+            anchor="left"
           >
-            <ListItem>
-              <Avatar
-                alt="Remy Sharp"
-                src="https://cdn.ndtv.com/tech/images/gadgets/zuckerberg_fb_live_scrsht.jpg?output-quality=80&output-format=webp"
-                className={classes.bigAvatar}
-              />
-            </ListItem>
-            <ListItem button onClick={handleClick}>
-              <ListItemIcon>
-                <PersonIcon />
-              </ListItemIcon>
-              <ListItemText primary="My Profile" />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItem className={classes.nested}>
-                  <ListItemIcon>
-                    <FlameIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="20 day event streak!" />
-                </ListItem>
-              </List>
-            </Collapse>
-            <ListItem button component={Link} to="/feed">
-              <ListItemIcon>
-                <DashIcon />
-              </ListItemIcon>
-              <ListItemText primary="Feed" />
-            </ListItem>
-            <ListItem button component={Link} to="/userFeed">
-              <ListItemIcon>
-                <GroupIcon />
-              </ListItemIcon>
-              <ListItemText primary="UserFeed" />
-            </ListItem>
-            <ListItem button onClick={handleReset} component={Link} to="/">
-              <ListItemIcon>
-                <DNSIcon />
-              </ListItemIcon>
-              <ListItemText primary="Reset Quiz" />
-            </ListItem>
-          </List>
-        </Drawer>
-        <div>
-          <Box p={30}>
-            <Route exact path="/" component={Quiz} />
-            <Route path="/feed" component={FeedComponent} />
-            <Route path="/userfeed" component={UserFeed} />
-          </Box>
-        </div>
-      </ApolloProvider>
-    </Router>
+            <List
+              component="nav"
+              aria-labelledby="nested-list-subheader"
+              className={classes.root}
+            >
+              <ListItem>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://cdn.ndtv.com/tech/images/gadgets/zuckerberg_fb_live_scrsht.jpg?output-quality=80&output-format=webp"
+                  className={classes.bigAvatar}
+                />
+              </ListItem>
+              <ListItem button onClick={handleClick}>
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="My Profile" />
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding  >
+                  <ListItem className={classes.nested}>
+                    <ListItemIcon>
+                      <FlameIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="20 day event streak!" />
+                  </ListItem>
+                </List>
+              </Collapse>
+              <ListItem button component={Link} to="/feed">
+                <ListItemIcon>
+                  <DashIcon />
+                </ListItemIcon>
+                <ListItemText primary="Feed" />
+              </ListItem>
+              <ListItem button component={Link} to="/userFeed">
+                <ListItemIcon>
+                  <GroupIcon />
+                </ListItemIcon>
+                <ListItemText primary="UserFeed" />
+              </ListItem>
+              <ListItem button onClick={handleReset} component={Link} to="/">
+                <ListItemIcon>
+                  <DNSIcon />
+                </ListItemIcon>
+                <ListItemText primary="Reset Quiz" />
+              </ListItem>
+            </List>
+          </Drawer>
+          <div >
+            <Box p={30}>
+              <Route exact path="/" component={Quiz} />
+              <Route path="/feed" component={FeedComponent} />
+              <Route path="/userfeed" component={UserFeed} />
+            </Box>
+          </div>
+        </ApolloProvider>
+      </Router>
+    </div>
   );
 }
 

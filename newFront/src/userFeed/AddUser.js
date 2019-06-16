@@ -50,6 +50,7 @@ class AddEvent extends Component {
         return (
             <form id="add-event" onSubmit={this.submitForm.bind(this)}>
                 <div className="field">
+                    <h2>Add an Event!</h2><br />
                     <label>Event Name:</label>
                     <input type="text" onChange={(e) => this.setState({ name: e.target.value })} />
                 </div>
