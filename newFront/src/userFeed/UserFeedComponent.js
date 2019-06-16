@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {graphql} from 'react-apollo'
-import { getQuizQuery, getEventsQuery,getEventsByCat } from '../query/query';
+import React, { Component } from 'react';
+import { graphql } from 'react-apollo'
+import { getQuizQuery, getEventsQuery, getEventsByCat, getUserFeedQuery } from '../query/query';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 //components
-import FeedCardList from './FeedCard'
+import UserFeedCardList from './UserFeedCard'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,47 +22,47 @@ const useStyles = makeStyles(theme => ({
 
 
 class FeedComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-              profile: {cat : "social"}
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      profile: { cat: "social" }
     }
+  }
 
-    displayFeed() {
-        var data = this.props.data;
-        if(data.loading|| data.events == undefined) {
-            return<div>Loading event...</div>
-        } else {
-            // console.log(data);
-            //data is ready, map to html and return it
-            return (
-              <AutoGrid eventList= {data.events}/>
-            );
-        }
+  displayFeed() {
+    var data = this.props.data;
+    if (data.loading || data.events == undefined) {
+      return <div>Loading event...</div>
+    } else {
+      // console.log(data);
+      //data is ready, map to html and return it
+      return (
+        <AutoGrid eventList={data.events} />
+      );
     }
+  }
 
-    render() {
-        console.log(this.props)
-        return (
-            <div id="event-list">
-                {this.displayFeed()}
-            </div>
-        );
-    }
+  render() {
+    console.log(this.props)
+    return (
+      <div id="event-list">
+        {this.displayFeed()}
+      </div>
+    );
+  }
 }
 
 function AutoGrid(props) {
   const classes = useStyles();
 
- return (
+  return (
     <div className={classes.root}>
       <Grid container spacing={4}>
 
         {props.eventList.map((value, index) => {
           return (
             <Grid item xs={6}>
-              <FeedCardList feedEvent={value}/>
+              <UserFeedCardList feedEvent={value} />
             </Grid>
           )
         })}
@@ -76,16 +76,7 @@ function AutoGrid(props) {
 
 //bind booklist to getbooksquery
 //the query result is stored in props
-export default graphql(getEventsByCat, {
-    options: (props) => {
-        //console.log("+++++++++" +props.bookId)
-        return {
-            variables: {
-                cat:  (props.profile ? props.profile.cat : ["social","cooking"])
-            }
-        }
-    }
-})(FeedComponent)
+export default graphql(getUserFeedQuery)(UserFeedComponent)
 
 
 //how to make a query
