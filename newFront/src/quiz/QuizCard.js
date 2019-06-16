@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -19,6 +19,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { graphql } from "react-apollo";
 import { state, addTo } from "./State.js";
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -47,6 +50,7 @@ const useStyles = makeStyles(theme => ({
 function QuizFun(props) {
   const classes = useStyles();
   const [count, setCount] = React.useState(0);
+
   if (!props) {
     return "loading";
   }
@@ -72,7 +76,7 @@ function QuizFun(props) {
       image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
       break;
   }
-  console.log();
+
   return (
     <div
       style={{
@@ -81,22 +85,26 @@ function QuizFun(props) {
       }}
     >
       <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title="Paella dish"
-        />
+        <CardMedia className={classes.media} image={image} title="Good" />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.value.elem.activity}
           </Typography>
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={() => addTo(props.value.elem.type)}
+          <Grid
+            container
+            direction="row"
+            justify="flex-end"
+            alignItems="flex-end"
           >
-            <CheckIcon />
-          </IconButton>
+            <Checkbox
+              checked={state.checkedA}
+              onChange={addTo(props.value.elem.type)}
+              value="checkedA"
+              inputProps={{
+                "aria-label": "primary checkbox"
+              }}
+            />
+          </Grid>
         </CardContent>
         <div
           style={{
