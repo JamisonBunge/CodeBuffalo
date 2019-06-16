@@ -5,4 +5,7 @@ function addTo(add) {
     console.log(state.stateArr);
   }
 }
-export { state, addTo };
+function reset() {
+  state = { stateArr: [] };
+}
+export { state, addTo, reset };
