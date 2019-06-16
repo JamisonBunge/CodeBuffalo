@@ -1,5 +1,6 @@
 
-
+DEMO
+ https://youtu.be/Wiz0UDfehJQ
 
 RUN INSTRUCTIONS
 
@@ -13,7 +14,6 @@ RUN INSTRUCTIONS
 6] If something goes wrong with the above instructions try removing the nodemodules
 newFront and backend and repeat the install commands. If the problem persists and you can not
 get the code to run feel free to contact me: 716-467-7807
-
 
 
 About Trova
@@ -36,7 +36,6 @@ Images not showing up on the cards?
 
 
 Powered By Apollo GraphQL
-
 
 
 Tech
