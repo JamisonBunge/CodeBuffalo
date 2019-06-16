@@ -22,6 +22,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import FlameIcon from "@material-ui/icons/Whatshot";
 import Avatar from "@material-ui/core/Avatar";
+import Landing from "./LandingView";
 
 const client = new ApolloClient({
   uri: "http://localhost:5004/" //endpoint were making request to queries to
@@ -102,7 +103,7 @@ function App() {
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding  >
+                <List component="div" disablePadding>
                   <ListItem className={classes.nested}>
                     <ListItemIcon>
                       <FlameIcon />
@@ -123,17 +124,23 @@ function App() {
                 </ListItemIcon>
                 <ListItemText primary="UserFeed" />
               </ListItem>
-              <ListItem button onClick={handleReset} component={Link} to="/">
+              <ListItem
+                button
+                onClick={handleReset}
+                component={Link}
+                to="/quiz"
+              >
                 <ListItemIcon>
                   <DNSIcon />
                 </ListItemIcon>
-                <ListItemText primary="Reset Quiz" />
+                <ListItemText primary="Take Quiz" />
               </ListItem>
             </List>
           </Drawer>
-          <div >
+          <div>
             <Box p={30}>
-              <Route exact path="/" component={Quiz} />
+              <Route exact path="/" component={Landing} />
+              <Route path="/quiz" component={Quiz} />
               <Route path="/feed" component={FeedComponent} />
               <Route path="/userfeed" component={UserFeed} />
             </Box>
