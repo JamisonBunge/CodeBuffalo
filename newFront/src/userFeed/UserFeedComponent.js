@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
-import { getQuizQuery, getEventsQuery, getEventsByCat } from "../query/query";
+import {
+  getQuizQuery,
+  getEventsQuery,
+  getEventsByCat,
+  getUserFeedQuery
+} from "../query/query";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 //components
-import FeedCardList from "./UserFeedCard";
+import UserFeedCardList from "./UserFeedCard";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,7 +59,7 @@ function AutoGrid(props) {
         {props.eventList.map((value, index) => {
           return (
             <Grid item xs={6}>
-              <FeedCardList feedEvent={value} />
+              <UserFeedCardList feedEvent={value} />
             </Grid>
           );
         })}
@@ -65,16 +70,7 @@ function AutoGrid(props) {
 
 //bind booklist to getbooksquery
 //the query result is stored in props
-export default graphql(getEventsByCat, {
-  options: props => {
-    //console.log("+++++++++" +props.bookId)
-    return {
-      variables: {
-        cat: props.profile ? props.profile.cat : ["social", "cooking"]
-      }
-    };
-  }
-})(FeedComponent);
+export default graphql(getUserFeedQuery)(UserFeedComponent);
 
 //how to make a query
 
