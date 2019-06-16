@@ -18,12 +18,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { graphql } from "react-apollo";
-
-var state = [];
-function likeType(str) {
-  state.push(str);
-  console.log(state.length);
-}
+import { state, addTo } from "./State.js";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -73,6 +68,7 @@ function QuizFun(props) {
       image = "http://thebunkhouse.us/images/Grad-Party-Gathering.jpg";
       break;
   }
+  console.log();
   return (
     <div
       style={{
@@ -93,7 +89,7 @@ function QuizFun(props) {
           <IconButton
             variant="contained"
             color="primary"
-            onClick={likeType(props.value.elem.type)}
+            onClick={() => addTo(props.value.elem.type)}
           >
             <CheckIcon />
           </IconButton>

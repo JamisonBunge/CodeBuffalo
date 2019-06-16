@@ -7,6 +7,7 @@ import Card from "./QuizCard.js";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import CheckIcon from "@material-ui/icons/Check";
+import FeedComponent from "../feed/FeedComponent";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
 
