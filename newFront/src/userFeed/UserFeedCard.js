@@ -127,7 +127,7 @@ function ImgMediaCard(props) {
             className={"MuiTypography--subheading"}
             variant={"caption"}
           >
-            {props.eventItem.address}
+            {props.eventItem.description}<br/>User: {props.eventItem.user}
           </Typography>
         </CardContent>
       </CardActionArea>

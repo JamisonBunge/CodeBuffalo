@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo'
 import { getQuizQuery, getEventsQuery, getEventsByCat, getUserFeedQuery } from '../query/query';
-
+import AddUser from './AddUser'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-class FeedComponent extends Component {
+class UserFeedComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,13 +31,14 @@ class FeedComponent extends Component {
 
   displayFeed() {
     var data = this.props.data;
-    if (data.loading || data.events == undefined) {
+    console.log(data)
+    if (data.loading || data.userEvents == undefined) {
       return <div>Loading event...</div>
     } else {
       // console.log(data);
       //data is ready, map to html and return it
       return (
-        <AutoGrid eventList={data.events} />
+        <AutoGrid eventList={data.userEvents} />
       );
     }
   }
@@ -47,6 +48,7 @@ class FeedComponent extends Component {
     return (
       <div id="event-list">
         {this.displayFeed()}
+        <AddUser />
       </div>
     );
   }
@@ -64,6 +66,7 @@ function AutoGrid(props) {
             <Grid item xs={6}>
               <UserFeedCardList feedEvent={value} />
             </Grid>
+
           )
         })}
       </Grid>

@@ -38,8 +38,35 @@ query($cat: [String]!) {
 `
 
 
+const getUserFeedQuery = gql`
+{
+  userEvents{
+    name
+    description
+    score
+    user
+  }
+}
+`
+const addEventsMutation = gql`
+mutation($name: String!,$description: String!) {
+  post(name: $name,description: $description) {
+    name
+    description
+    score
+    user
+      }
+}
+`
+
+
+
+
 export {
   getQuizQuery,
   getEventsQuery,
-  getEventsByCat
+  getEventsByCat,
+  getUserFeedQuery,
+  addEventsMutation
+
 };
