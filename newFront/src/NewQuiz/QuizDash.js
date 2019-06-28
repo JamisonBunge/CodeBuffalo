@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getQuizQuery } from "../query/query";
 import { graphql } from "react-apollo";
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ProgressBar from './Stepper'
 
 //STATE HOLDS QUIZ ANSWERS AND WHAT QUIZ QURSTION YOURE ON
 //PROPS HOLDS THE QUERY RESULT, THE GETQUIZ OBJECT
@@ -20,6 +21,7 @@ class QuizDash extends Component {
         super(props)
         this.state = {
             index: 0,
+
         }
     }
 
@@ -38,23 +40,34 @@ class QuizDash extends Component {
 
         if (quizQuestionArray == undefined) {
             return <div>Loading event...</div>
+        } else if (this.state.index == 4) {
+            return <div>
+                <h1>Quiz complete! check out your custom feed!</h1>
+                <ProgressBar totalQuestions={4}
+                    currentQuestion={this.state.index}
+
+                />
+            </div>
+
         } else {
             return (
                 <div>
+                    <ProgressBar totalQuestions={4}
+                        currentQuestion={this.state.index}
+
+                    />
                     <h3>Question #{this.state.index + 1}</h3>
                     <QCard index={this.state.index}
                         callbackFromParent={this.handleChange}
                         question={quizQuestionArray[this.state.index]}
                     />
+
                 </div>
             );
+
         }
     }
 }
-
-
-
-
 
 class QCard extends Component {
     constructor(props) {
@@ -86,6 +99,14 @@ class QCard extends Component {
         );
     }
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -57,3 +57,17 @@ form button {
   background: #ad1457;
   color:  #ad1457;
 }
+.filler {
+  background: blue;
+  height: 100%;
+  border-radius: inherit;
+  transition: transform 1s;
+}
+
+.progress-bar {
+  position: relative;
+  height: 20px;
+  width: 100%;
+  border-radius: 50px;
+  border: 1px solid black;
+}

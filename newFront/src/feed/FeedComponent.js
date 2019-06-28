@@ -29,6 +29,7 @@ class FeedComponent extends Component {
     this.state = {
       profile: { cat: "social" }
     }
+    console.log(this)
   }
 
   displayFeed() {
