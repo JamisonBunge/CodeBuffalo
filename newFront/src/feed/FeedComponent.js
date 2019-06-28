@@ -75,13 +75,11 @@ function AutoGrid(props) {
 
 }
 
-
-
 //bind booklist to getbooksquery
 //the query result is stored in props
+
 export default graphql(getEventsByCat, {
   options: (props) => {
-    //console.log("+++++++++" +props.bookId)
     return {
       variables: {
         cat: (props.profile ? props.profile.cat : state.stateArr)

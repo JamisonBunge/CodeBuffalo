@@ -1,5 +1,7 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
 
+//NOT CURRENTLY USED
+
 class Picture extends RESTDataSource {
     constructor() {
         super();

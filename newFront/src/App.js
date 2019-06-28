@@ -23,6 +23,8 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import FlameIcon from "@material-ui/icons/Whatshot";
 import Avatar from "@material-ui/core/Avatar";
 import Landing from "./LandingView";
+import { watchFile } from "fs";
+import QuizDash from "./NewQuiz/QuizDash.js";
 
 const client = new ApolloClient({
   uri: "http://localhost:5004/" //endpoint were making request to queries to
@@ -141,6 +143,12 @@ function App() {
                 </ListItemIcon>
                 <ListItemText primary="Take Quiz" />
               </ListItem>
+              <ListItem button component={Link} to="/newquiz">
+                <ListItemIcon>
+                  <DashIcon />
+                </ListItemIcon>
+                <ListItemText primary="Test" />
+              </ListItem>
             </List>
           </Drawer>
           <div>
@@ -149,6 +157,7 @@ function App() {
               <Route path="/quiz" component={Quiz} />
               <Route path="/feed" component={FeedComponent} />
               <Route path="/userfeed" component={UserFeed} />
+              <Route path="/newquiz" component={QuizDash} />
             </Box>
           </div>
         </ApolloProvider>

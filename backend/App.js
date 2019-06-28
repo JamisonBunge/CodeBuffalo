@@ -4,9 +4,6 @@ const Place = require("./Places")
 const mongoose = require('mongoose')
 const _ = require('lodash');
 const Event = require('./models/Event');
-// const mongo = require('mongodb').MongoClient
-// const url = 'mongodb://localhost:27017'
-// const sqlite3 = require('sqlite3')
 
 const schema = gql`
 type BoredResponse {
@@ -54,20 +51,16 @@ const resolvers = {
         getEvents: async (parent, { cat }, { dataSources }) => dataSources.Place.getPlaces(cat),
         events: async (parent, { cat }, { dataSources }) => dataSources.Place.getAllPlaces(cat),
         userEvents: () => { return Event.find({}) }
-        // randomPic: async (parent, { cat }, { dataSources }) => dataSources.Place.getAllPlaces(cat)
     },
     Mutation: {
         post: (root, args) => {
-            // return Event.find({ id: parent.id })
             let event = new Event({
                 name: args.name,
                 description: args.description,
                 score: 0,
                 user: "Nick M"
-
             });
-            //save to the database through mongoose
-            return event.save(); // <- wow, very simple
+            return event.save();
         }
     }
 }
@@ -92,13 +85,3 @@ mongoose.connect('mongodb+srv://jami:thisismypassword@codebuffalo-c68wz.mongodb.
 mongoose.connection.once('open', () => {
     console.log('connected to the DB');
 });
-
-
-// mutation{
-//     post(name: "Pool Party!",description:"BYOB.") {
-//       name
-//       description
-//       score
-//       user
-//     }
-//   }

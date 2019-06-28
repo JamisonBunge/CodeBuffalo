@@ -3,36 +3,13 @@ const mongoose = require('mongoose')
 const _ = require('lodash');
 const Event = require('./models/Event');
 
-
-
-// mongoose.connect('mongodb+srv://jami:thisismypassword@codebuffalo-c68wz.mongodb.net/test?retryWrites=true&w=majority');
-// mongoose.connection.once('open', () => {
-//     console.log('connected to the DB');
-// });
-
-
 class Place extends RESTDataSource {
     constructor() {
         super();
-        // this.ClientID = "ed2n0vspsa3f8qjz10kbe7yq99vzvd"
-        this.imgarr = ["https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-
-
-
-
-        ]
-
     }
     willSendRequest(request) {
         //     request.headers.set('Client-ID', this.ClientID);
     }
-
 
     async getAllPlaces(cat) {
         let res = []
@@ -56,8 +33,6 @@ class Place extends RESTDataSource {
             }
             console.log(queryVal)
 
-
-
             let imarr = await this.getImg(cat[y])
 
             let result = await this.get("https://api.tomtom.com/search/2/categorySearch/" + queryVal + ".json?limit=20&lat=42.886448&lon=-78.878372&topLeft=37.553%2C-122.453&btmRight=37.4%2C-122.55&key=ygEtXJxPIXwEUV7eGCfNnGOkDPEdVCqC")
@@ -67,24 +42,22 @@ class Place extends RESTDataSource {
                 let obj = new Object()
                 obj.name = result.results[x].poi.name
                 obj.id = result.results[x].id
+
+                //RANDOM OBJECTS
                 obj.address = result.results[x].address.freeformAddress
                 let ran = Math.random() * 30
                 ran = Math.floor(ran)
                 obj.score = ran
+
+                //
                 obj.type = cat[y]
                 obj.image_url = imarr[x]
                 res.push(obj)
-                // if (x == 1) { console.log(Event.find({ id: 2 })) }
             }
         }
         this.shuffle(res)
         return res
-
-        //
-
-
     }
-
     async getImg(cat) {
         let queryVal
         let imarr = []
@@ -107,18 +80,13 @@ class Place extends RESTDataSource {
         }
 
         let result = await this.get("https://pixabay.com/api/?key=12788410-9035c72a1c69f8d0d56b0c6d9&category=" + queryVal)
-        console.log(result)
+        //console.log(result)
 
         for (let x in result.hits) {
             //console.log(result.hits[x].webformatURL)
             imarr.push(result.hits[x].webformatURL)
         }
-
-
-
-
         return imarr
-
     }
 
 
@@ -145,7 +113,8 @@ class Place extends RESTDataSource {
         let result = await this.get("https://api.tomtom.com/search/2/categorySearch/" + event + ".json?limit=20&lat=42.886448&lon=-78.878372&topLeft=37.553%2C-122.453&btmRight=37.4%2C-122.55&key=ygEtXJxPIXwEUV7eGCfNnGOkDPEdVCqC")
         console.log(result.results)
         for (let x in result.results) {
-            //console.log(result.results[x].poi.name)
+
+
             let obj = new Object()
             obj.name = result.results[x].poi.name
             obj.id = result.results[x].id
@@ -154,23 +123,9 @@ class Place extends RESTDataSource {
             ran = Math.floor(ran)
             obj.type = event
             obj.score = ran
-
             res.push(obj)
-            // if (x == 1) { console.log(Event.find({ id: 2 })) }
+
         }
-
-        // let x = Event.find({ id: 2 })
-        // if (x.docs.length == 0) {
-        //     console.log("yes");
-        // } else {
-        //     console.log("no")
-        // }
-
-
-
-
-
-
         return res
         //return { "response": result, "responseSplit": responseSplit, "badReviews": badReviews, "firstReview": badReviews[1] }
     }
